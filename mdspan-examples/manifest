@@ -1,0 +1,15 @@
+: 1
+name: mdspan-examples
+version: 0.6.0
+
+language: c++
+project: kokkos
+summary: Reference implementation of mdspan targeting C++23, examples
+license: Apache-2.0         ; Apache License 2.0
+description-file: README.md
+package-url: https://github.com/build2-packaging/kokkos-mdspan
+src-url: https://github.com/kokkos/mdspan
+doc-url: https://github.com/kokkos/mdspan/wiki
+
+depends: * build2 >= 0.16.0
+depends: * bpkg >= 0.16.0

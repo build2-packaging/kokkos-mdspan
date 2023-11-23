@@ -1,0 +1,1 @@
+../../upstream/examples/restrict_accessor/restrict_accessor.cpp

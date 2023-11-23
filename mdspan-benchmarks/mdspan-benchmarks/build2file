@@ -1,0 +1,10 @@
+libs =
+import libs += mdspan%lib{mdspan}
+import libs += google-benchmark%lib{benchmark}
+
+# We can't add more benchmarks because some of them require cuda, hip, sycl, openmp.
+./: exe{copy_layout_stride}: {cxx}{copy_layout_stride} {hxx}{fill} $libs
+./: exe{stencil_3d}: {cxx}{stencil_3d} {hxx}{fill} $libs
+./: exe{tiny_matrix_add}: {cxx}{tiny_matrix_add} {hxx}{fill} $libs
+
+cxx.poptions =+ "-I$out_root" "-I$src_root"

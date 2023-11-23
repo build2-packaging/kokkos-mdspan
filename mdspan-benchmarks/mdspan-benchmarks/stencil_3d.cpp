@@ -1,0 +1,1 @@
+../../upstream/benchmarks/stencil/stencil_3d.cpp

@@ -1,0 +1,5 @@
+mdspan-tests
+
+# Testscript output directory (can be symlink).
+#
+test-mdspan-tests

@@ -1,0 +1,11 @@
+:1
+location: mdspan/
+
+:
+location: mdspan-examples/
+
+:
+location: mdspan-tests/
+
+:
+location: mdspan-benchmarks/
