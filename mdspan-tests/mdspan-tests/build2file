@@ -9,5 +9,9 @@ for test_source_file : cxx{test_*}
     ./: exe{$name}: $test_source_file hxx{offload_utils foo_customizations} $libs
 }
 
+if ($cxx.target.system != 'win32-msvc')
+{
+    cxx.coptions =+ -Wno-sign-compare
+}
 cxx.poptions =+ "-I$out_root" "-I$src_root"
 

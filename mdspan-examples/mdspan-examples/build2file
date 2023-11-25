@@ -3,8 +3,18 @@ import libs += mdspan%lib{mdspan}
 
 cxx.poptions =+ "-I$out_root" "-I$src_root"
 
-./: exe{aligned_accessor}:    {cxx}{aligned_accessor}    $libs
 ./: exe{dot_product}:         {cxx}{dot_product}         $libs
 ./: exe{godbolt_starter}:     {cxx}{godbolt_starter}     $libs
 ./: exe{restrict_accessor}:   {cxx}{restrict_accessor}   $libs
 ./: exe{simple_tiled_layout}: {cxx}{simple_tiled_layout} $libs
+
+
+if ($cxx.target.system != 'win32-msvc')
+{
+    cxx.coptions =+ -Wno-sign-compare
+}
+
+# Disabled because the problem with aligned_alloc isn't fixed for mignw
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=83662#c10 
+./: exe{aligned_accessor}: include = ($cxx.target.system != 'mingw32')
+exe{aligned_accessor}: {cxx}{aligned_accessor} $libs
