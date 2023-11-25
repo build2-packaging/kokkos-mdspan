@@ -5,8 +5,8 @@ import libs += gtest%lib{gtest} gtest%liba{gtest_main}
 # Each file with `test_` prefix is a separate executable test.
 for test_source_file : cxx{test_*}
 {
-	name = $name($test_source_file)
-	./: exe{$name}: hxx{offload_utils foo_customizations} $libs
+    name = $name($test_source_file)
+    ./: exe{$name}: $test_source_file hxx{offload_utils foo_customizations} $libs
 }
 
 cxx.poptions =+ "-I$out_root" "-I$src_root"
