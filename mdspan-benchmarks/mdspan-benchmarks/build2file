@@ -7,4 +7,9 @@ import libs += google-benchmark%lib{benchmark}
 ./: exe{stencil_3d}: {cxx}{stencil_3d} {hxx}{fill} $libs
 ./: exe{tiny_matrix_add}: {cxx}{tiny_matrix_add} {hxx}{fill} $libs
 
+# If c++ standard supports multidimensional operator[] the library uses it
+# instead of operator(), but the benchmarks always uses call operator.
+# Here we make use the lib defines the right operator.
+cxx.poptions =+ -DMDSPAN_USE_PAREN_OPERATOR=1
+
 cxx.poptions =+ "-I$out_root" "-I$src_root"
